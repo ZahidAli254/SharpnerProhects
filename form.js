@@ -19,11 +19,31 @@ function onSubmit(e) {
     // Remove error after 3 seconds
     setTimeout(() => msg.remove(), 3000);
   } else {
-    localStorage.setItem('name',nameInput.value);
-    localStorage.setItem('email',emailInput.value);
+    // localStorage.setItem('name',nameInput.value);
+    // localStorage.setItem('email',emailInput.value);
 
-    // Clear fields
-    nameInput.value = '';
-    emailInput.value = '';
+    // // Clear fields
+    // nameInput.value = '';
+    // emailInput.value = '';
+    let myobj = {
+        name: nameInput.value,
+        email: emailInput.value,
+        age:25
+
+        
+    };
+        
+        let myodj_seriatized= JSON.stringify(myobj);
+        //console.log(myodj_seriatized);
+        localStorage.setItem('myobj',myodj_seriatized);
+        
+         
+        
+       
+         let myobj_deserialized = JSON.parse(localStorage.getItem("myobj"));
+        
+         console. log(myobj_deserialized);
+    
+
   }
 }
