@@ -4,6 +4,7 @@ var filter = document.getElementById('filter');
 
 // Form submit event
 form.addEventListener('submit', addItem);
+
 // Delete event
 itemList.addEventListener('click', removeItem);
 // Filter event
@@ -12,32 +13,26 @@ filter.addEventListener('keyup', filterItems);
 // Add item
 function addItem(e){
   e.preventDefault();
-
-  // Get input value
+// Get input value
   var newItem = document.getElementById('item').value;
-
-  // Create new li element
+ // Create new li element
   var li = document.createElement('li');
   // Add class
   li.className = 'list-group-item';
   // Add text node with input value
   li.appendChild(document.createTextNode(newItem));
 
-    // Create edit button element
-    var editBtn = document.createElement('button');
+  // Get input value
+  var newItem1 = document.getElementById('item1').value;
 
-    // Add classes to edit button
-    editBtn.className = 'btn btn-danger btn-sm float-right edit';
-  
-    // Append text node
-    editBtn.appendChild(document.createTextNode('E'));
-  
-    // Append button to li
-    li.appendChild(editBtn);
-  
-    // Append li to list
-    itemList.appendChild(li);
+  // Create new li element
+  //var li = document.createElement('li');
+  // Add class
+  li.className = 'list-group-item';
+  // Add text node with input value
+  li.appendChild(document.createTextNode(newItem1));
 
+    
   // Create del button element
   var deleteBtn = document.createElement('button');
 
@@ -52,6 +47,22 @@ function addItem(e){
 
   // Append li to list
   itemList.appendChild(li);
+
+  // Create edit button element
+  var editBtn = document.createElement('button');
+
+  // Add classes to edit button
+  editBtn.className = 'btn btn-sm btn-sm float-right edit';
+
+  // Append text node
+  editBtn.appendChild(document.createTextNode('Edit'));
+
+  // Append button to li
+  li.appendChild(editBtn);
+
+  // Append li to list
+  itemList.appendChild(li);
+
 }
 
 // Remove item
@@ -76,6 +87,14 @@ function filterItems(e){
         item.style.display = 'block';
       } else {
         item.style.display = 'none';
+      }
+    });
+    Array.from(items).forEach(function(item1){
+      var itemName1 = item1.childNodes[1].textContent;
+      if(itemName1.toLowerCase().indexOf(text) != -1){
+        item1.style.display = 'block';
+      } else {
+        item1.style.display = 'none';
       }
     });
   }
