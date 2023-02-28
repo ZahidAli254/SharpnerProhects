@@ -2,16 +2,22 @@
 const myForm = document.querySelector('#my-form');
 const nameInput = document.querySelector('#name');
 const emailInput = document.querySelector('#email');
+const pNumInput = document.querySelector('#pNum');
 const msg = document.querySelector('.msg');
 const userList = document.querySelector('#users');
 
 // Listen for form submit
 myForm.addEventListener('submit', onSubmit);
 
+
+//     // localStorage.setItem('name',nameInput.value);
+//     // localStorage.setItem('email',emailInput.value);
+
+
 function onSubmit(e) {
   e.preventDefault();
   
-  if(nameInput.value === '' || emailInput.value === '') {
+  if(nameInput.value === '' || emailInput.value === '' || pNumInput.value==='') {
     // alert('Please enter all fields');
     msg.classList.add('error');
     msg.innerHTML = 'Please enter all fields';
@@ -19,31 +25,24 @@ function onSubmit(e) {
     // Remove error after 3 seconds
     setTimeout(() => msg.remove(), 3000);
   } else {
-    // localStorage.setItem('name',nameInput.value);
-    // localStorage.setItem('email',emailInput.value);
+    // Create new list item with user
+    const li = document.createElement('li');
 
-    // // Clear fields
-    // nameInput.value = '';
-    // emailInput.value = '';
-    let myobj = {
-        name: nameInput.value,
-        email: emailInput.value,
-        age:25
+    // Add text node with input values
+    li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value} : ${pNumInput.value}`));
+    localStorage.setItem('name',nameInput.value);
+    localStorage.setItem('email',emailInput.value);
+    localStorage.setItem('pNumInput',pNumInput.value);
 
-        
-    };
-        
-        let myodj_seriatized= JSON.stringify(myobj);
-        //console.log(myodj_seriatized);
-        localStorage.setItem('myobj',myodj_seriatized);
-        
-         
-        
-       
-         let myobj_deserialized = JSON.parse(localStorage.getItem("myobj"));
-        
-         console. log(myobj_deserialized);
-    
+    // Add HTML
+    // li.innerHTML = `<strong>${nameInput.value}</strong>e: ${emailInput.value}`;
 
+    // Append to ul
+    userList.appendChild(li);
+
+    // Clear fields
+    nameInput.value = '';
+    emailInput.value = '';
+    pNumInput.value ='';
   }
 }
