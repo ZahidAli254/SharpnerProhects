@@ -27,9 +27,23 @@ function onSubmit(e) {
   } else {
     // Create new list item with user
     const li = document.createElement('li');
+    const Deletebutton = document.createElement('input');
+    Deletebutton.type='button'
+    Deletebutton.value='Delete'
+    
+    Deletebutton.onclick=()=>{
+       localStorage.removeItem('email')
+       localStorage.removeItem('name')
+       localStorage.removeItem('pNumInput')
+       userList.removeChild(li);
+
+    }
+    // btn.setAttribute('class','btn');
+    // console.log(btn);
 
     // Add text node with input values
-    li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value} : ${pNumInput.value}`));
+    li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value} : ${pNumInput.value} `));
+    li.appendChild(Deletebutton);
     localStorage.setItem('name',nameInput.value);
     localStorage.setItem('email',emailInput.value);
     localStorage.setItem('pNumInput',pNumInput.value);
