@@ -1,62 +1,44 @@
-// Put DOM elements into variables
-const myForm = document.querySelector('#my-form');
-const nameInput = document.querySelector('#name');
-const emailInput = document.querySelector('#email');
-const pNumInput = document.querySelector('#pNum');
-const msg = document.querySelector('.msg');
-const userList = document.querySelector('#users');
+function saveToLocalStorage(event)
+        {
+            event.preventDefault();
+            const name = event.target.username.value;
+            const email = event.target.userEmail.value;
 
-// Listen for form submit
-myForm.addEventListener('submit', onSubmit);
+            const obj = {
+              name,
+              email
+            }
 
+            localStorage.setItem(obj.email, JSON.stringify(obj))
 
-//     // localStorage.setItem('name',nameInput.value);
-//     // localStorage.setItem('email',emailInput.value);
+            const userList= document.querySelector('#users');
 
+            const li = document.createElement('Li');
+            const delBtn = document.createElement('input');
+            const editBtn = document.createElement('input');
+            editBtn.type = 'button';
+            editBtn.value = 'EDIT'
+            delBtn.type = 'button'
+            delBtn.value = 'DELETE'
+            li.appendChild(document.createTextNode(`${obj.name} : ${obj.email}`))
+            li.appendChild(editBtn)
+            li.appendChild(delBtn)
+            userList.appendChild(li);
 
-function onSubmit(e) {
-  e.preventDefault();
-  
-  if(nameInput.value === '' || emailInput.value === '' || pNumInput.value==='') {
-    // alert('Please enter all fields');
-    msg.classList.add('error');
-    msg.innerHTML = 'Please enter all fields';
-
-    // Remove error after 3 seconds
-    setTimeout(() => msg.remove(), 3000);
-  } else {
-    // Create new list item with user
-    const li = document.createElement('li');
-    const Deletebutton = document.createElement('input');
-    Deletebutton.type='button'
-    Deletebutton.value='Delete'
-    
-    Deletebutton.onclick=()=>{
-       localStorage.removeItem('email')
-       localStorage.removeItem('name')
-       localStorage.removeItem('pNumInput')
-       userList.removeChild(li);
-
-    }
-    // btn.setAttribute('class','btn');
-    // console.log(btn);
-
-    // Add text node with input values
-    li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value} : ${pNumInput.value} `));
-    li.appendChild(Deletebutton);
-    localStorage.setItem('name',nameInput.value);
-    localStorage.setItem('email',emailInput.value);
-    localStorage.setItem('pNumInput',pNumInput.value);
-
-    // Add HTML
-    // li.innerHTML = `<strong>${nameInput.value}</strong>e: ${emailInput.value}`;
-
-    // Append to ul
-    userList.appendChild(li);
-
-    // Clear fields
-    nameInput.value = '';
-    emailInput.value = '';
-    pNumInput.value ='';
-  }
-}
+            delBtn.onclick = () => {
+            localStorage.removeItem(obj.email)
+            userList.removeChild(li)
+          }
+            editBtn.onclick = () => {
+            
+           // deserialized = JSON.parse(localStorage.getItem(obj.email))
+            localStorage.removeItem(obj.email)
+            userList.removeChild(li)
+            document.getElementById("name").value = obj.name
+            document.getElementById("email").value = obj.email
+            
+            
+          }
+          name.value="";
+          email.value='';
+        }

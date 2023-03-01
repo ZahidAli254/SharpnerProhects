@@ -5,36 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>JS For Beginners</title>
- <!-- <link rel="stylesheet" href="style.css"> -->
+ <link rel="stylesheet" href="style.css"> 
   </head>
   <body>
     <!-- <header>
       <h1>JS For Beginners</h1>
     </header> -->
-<!-- 
-    <section class="container">
-      <form id="my-form">
+
+     <section class="container">
+      <form id="my-form" onsubmit="saveToLocalStorage(event)">
         <h1>Add User</h1>
         <div class="msg"></div>
         <div>
           <label for="name">Name:</label>
-          <input type="text" id="name">
+          <input type="text" id="name" name="username">
         </div>
         <div>
           <label for="email">Email:</label>
-          <input type="text" id="email">
+          <input type="text" id="email" name="userEmail">
         </div>
         <input class="btn" type="submit" value="Submit">
-      </form>-->
-      <form id="my-form">
-      <label for="name">Name:</label> 
-      <input type="text" id="name">
-      <label for="email">Email:</label> 
-      <input type="text" id="email">
-      <label for="pNum">Phone Number:</label> 
-      <input type="text" id="pNum">
-      <input class="btn" type="submit" value="Submit">
-    </form>
+      </form>
+      
       <ul id="users"></ul>
       <!-- <ul class="items">
         <li class="item">Item 1</li>
