@@ -8,13 +8,31 @@ function saveToLocalStorage(event)
               name,
               email
             }
-            axios.post("https://crudcrud.com/api/2155d626fe1240f593e73c61fd923f79/AppointData",obj)
+            axios.post("https://crudcrud.com/api/0ca3962512464c7fb7adfa8f849d9dd3/appointeddata",obj)
             .then((response)=>{
               console.log(response);
             })
             .catch((err)=>{
               console.log(err);
             })
+
+            axios.get("https://crudcrud.com/api/0ca3962512464c7fb7adfa8f849d9dd3/appointeddata",obj)
+            .then((response)=>{
+           
+              console.log(response);
+
+             li.appendChild(document.createTextNode(`${obj.name} : ${obj.email}`))
+            li.appendChild(editBtn)
+            li.appendChild(delBtn)
+            userList.appendChild(li);
+            })
+            .catch((err)=>{
+              console.log(err);
+            })
+
+
+
+            
             //localStorage.setItem(obj.email, JSON.stringify(obj))
 
             const userList= document.querySelector('#users');
@@ -26,10 +44,10 @@ function saveToLocalStorage(event)
             editBtn.value = 'EDIT'
             delBtn.type = 'button'
             delBtn.value = 'DELETE'
-            li.appendChild(document.createTextNode(`${obj.name} : ${obj.email}`))
-            li.appendChild(editBtn)
-            li.appendChild(delBtn)
-            userList.appendChild(li);
+            // li.appendChild(document.createTextNode(`${obj.name} : ${obj.email}`))
+            // li.appendChild(editBtn)
+            // li.appendChild(delBtn)
+            // userList.appendChild(li);
 
             delBtn.onclick = () => {
             localStorage.removeItem(obj.email)
