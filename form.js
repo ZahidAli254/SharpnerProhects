@@ -8,8 +8,14 @@ function saveToLocalStorage(event)
               name,
               email
             }
-
-            localStorage.setItem(obj.email, JSON.stringify(obj))
+            axios.post("https://crudcrud.com/api/2155d626fe1240f593e73c61fd923f79/AppointData",obj)
+            .then((response)=>{
+              console.log(response);
+            })
+            .catch((err)=>{
+              console.log(err);
+            })
+            //localStorage.setItem(obj.email, JSON.stringify(obj))
 
             const userList= document.querySelector('#users');
 
