@@ -1,0 +1,36 @@
+<html>
+    <head><title>
+    JS for beginners
+</title>
+<link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <header>
+        <h1>JS for beginners</h1>
+    </header>
+
+    <section class="container">
+       <form id="my-form" onsubmit="saveToLocalStorage(event)">
+            <h1>
+                Add User
+            </h1>
+            <div class="msg"></div>
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" id="name">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" id="email">
+            </div>
+            <input class="btn" type="submit" value="submit">
+
+        </form>
+        <ul id='listOfUsers'></ul>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.3/axios.min.js"></script>
+           </section>
+    <script src="formtest.js">
+        
+    </script>
+</body>
+</html>
