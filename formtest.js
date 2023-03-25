@@ -70,7 +70,14 @@ function showNewUserOnScreen(user){
 
 //Edit User
 
+function editUserDetails(emailId, name,userId){
 
+    document.getElementById('email').value = emailId;
+    document.getElementById('name').value = name;
+    
+
+    deleteUser(userId)
+ }
 
 // deleteUser('abc@gmail.com')
 

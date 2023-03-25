@@ -50,16 +50,27 @@ function saveToLocalStorage(event)
             // userList.appendChild(li);
 
             delBtn.onclick = () => {
-            localStorage.removeItem(obj.email)
-            userList.removeChild(li)
+            // localStorage.removeItem(obj.email)
+            // userList.removeChild(li)
+            axios.delete("https://crudcrud.com/api/0ca3962512464c7fb7adfa8f849d9dd3/appointeddata",obj)
+            .then((response)=>{
+              localStorage.removeItem(obj.email)
+              userList.removeChild(li)
+              console.log(response);
+            })
+            .catch((err)=>{
+              console.log(err);
+            })
+
+
           }
             editBtn.onclick = () => {
             
            // deserialized = JSON.parse(localStorage.getItem(obj.email))
-            localStorage.removeItem(obj.email)
-            userList.removeChild(li)
-            document.getElementById("name").value = obj.name
-            document.getElementById("email").value = obj.email
+            // localStorage.removeItem(obj.email)
+            // userList.removeChild(li)
+            // document.getElementById("name").value = obj.name
+            // document.getElementById("email").value = obj.email
             
             
           }
