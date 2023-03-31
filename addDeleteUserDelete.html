@@ -2,17 +2,17 @@
     <head><title>
     JS for beginners
 </title>
-<link rel="stylesheet" href="style.css"> 
+<!-- <link rel="stylesheet" href="style.css">  -->
 </head>
 <body>
     <header>
-        <h1>JS for beginners</h1>
+        <h1>TODO LIST</h1>
     </header>
 
     <section class="container">
        <form id="my-form" onsubmit="saveToLocalStorage(event)">
             <h1>
-                Add User
+                Add Task
             </h1>
             <div class="msg"></div>
             <div>
@@ -20,13 +20,15 @@
                 <input type="text" id="name">
             </div>
             <div>
-                <label for="email">Email:</label>
+                <label for="email">Discription:</label>
                 <input type="text" id="email">
             </div>
-            <input class="btn" type="submit" value="submit">
+            <input class="btn" type="submit" value="Add">
+            <!-- <input class="btn" type="submit" value="✖"> -->
 
         </form>
-        <ul id='listOfUsers'></ul>
+        <ul id='listOfUsers1'></ul>
+        <ul id='listOfUsers2'></ul>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.2.3/axios.min.js"></script>
            </section>
     <script src="formtest.js">
